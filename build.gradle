@@ -40,6 +40,10 @@ dependencies {
 	//implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:2.7.17' -> 이게 특정버전 명시
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' //spring 버전이랑 같게 자동으로 버전세팅
 
+	//유효성검사
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+
 }
 
 tasks.named('test') {
