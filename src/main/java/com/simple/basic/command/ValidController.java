@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -62,7 +63,8 @@ public class ValidController {
     }
 
     @PostMapping("/quiz01Form")
-    public String quiz01Form(@Valid  @ModelAttribute("vo") DemoVO vo, BindingResult result) {
+    public String quiz01Form(@Valid  @ModelAttribute("vo") DemoVO vo, BindingResult result,
+                             RedirectAttributes redirectAttributes) {
 
         System.out.println("id:"+vo.getId());
         System.out.println("pw:"+vo.getPw());
@@ -70,6 +72,8 @@ public class ValidController {
         if(result.hasErrors()){
             return "valid/quiz01";
         }
+
+        redirectAttributes.addFlashAttribute("vo", vo);
 
         return "redirect:/valid/quiz01_result";
     }
